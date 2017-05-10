@@ -4,6 +4,7 @@ var mybtn=document.getElementsByClassName("cbutton");
     var myCal="";
     var myCom = false;
     var mySwitch = false; 
+    var myOpe=["+","-","*","/"];
 
     console.log(mybtn);
     for(var i=0; i<mybtn.length; i++){
@@ -15,6 +16,17 @@ var mybtn=document.getElementsByClassName("cbutton");
                 myCal="";
             }
             
+            if(myValue=="+" || myValue=="-" || myValue=="*" || myValue=="/"){
+                if(mySwitch){
+                mySwitch = false;
+                if(myOpe.indexOf(myOutput.innerHTML.slice(-1))>-1){
+                    myCal = myCal.substring(0,myCal.length - 1);
+                }else{
+                myCal = eval(myCal);
+                }
+            }
+                mySwitch = true;
+            }
             
             if(myValue=="="){
                 myCal = eval(myCal);
@@ -26,14 +38,9 @@ var mybtn=document.getElementsByClassName("cbutton");
                 myCal += myValue; 
             }
             
-            if(mySwitch){
-                mySwitch = false;
-                myCal = eval(myCal);
-            }
             
-            if(myValue=="+" || myValue=="-" || myValue=="*" || myValue=="/"){
-                mySwitch = true;
-            }
+            
+            
              
             myOutput.innerHTML = myCal;          
         });
