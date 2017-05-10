@@ -29,19 +29,17 @@ var mybtn=document.getElementsByClassName("cbutton");
             }
             
             if(myValue=="="){
+                myValue="";
+                if(myOpe.indexOf(myOutput.innerHTML.slice(-1))>-1){
                 myCal = eval(myCal);
-                myCom=true;
+                }
             }else if(myValue=="C"){
                 myCal = 0;
                 myCom=true;
             }else{
                 myCal += myValue; 
             }
-            
-            
-            
-            
-             
+         
             myOutput.innerHTML = myCal;          
         });
     }
