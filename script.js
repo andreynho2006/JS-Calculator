@@ -36,6 +36,8 @@ var mybtn=document.getElementsByClassName("cbutton");
             }else if(myValue=="C"){
                 myCal = 0;
                 myCom=true;
+            }else if(myOutput.innerHTML.indexOf(".")>-1 && myValue=="."){
+                myValue="";
             }else{
                 myCal += myValue; 
             }
